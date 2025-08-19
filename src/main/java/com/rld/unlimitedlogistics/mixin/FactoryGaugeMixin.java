@@ -30,7 +30,11 @@ import static com.rld.unlimitedlogistics.CreateUnlimitedLogistics.LOGGER;
 @Mixin(FactoryPanelBehaviour.class)
 public abstract class FactoryGaugeMixin extends FilteringBehaviourMixin {
     @Unique int mode = 0;
-    @Unique private final static int vaultMultiplier = AllConfigs.server().logistics.vaultCapacity.get();
+
+
+    @Unique private int getVaultMultiplier() {
+        return AllConfigs.server().logistics.vaultCapacity.get();
+    }
 
     @Inject(method = "createBoard", at = @At("HEAD"), cancellable = true)
     public void onCreateBoard(Player player, BlockHitResult hitResult, CallbackInfoReturnable<ValueSettingsBoard> cir) {
@@ -104,7 +108,7 @@ public abstract class FactoryGaugeMixin extends FilteringBehaviourMixin {
         return levelInStorage / switch(mode) {
             case 0 -> 1;
             case 1 -> getFilter().getMaxStackSize();
-            case 2 -> getFilter().getMaxStackSize() * vaultMultiplier;
+            case 2 -> getFilter().getMaxStackSize() * getVaultMultiplier();
             default -> throw new IllegalStateException("Invalid Mode: " + mode);
         };
     }
@@ -124,7 +128,7 @@ public abstract class FactoryGaugeMixin extends FilteringBehaviourMixin {
         return getAmount() * switch(mode) {
             case 0 -> 1;
             case 1 -> getFilter().getMaxStackSize();
-            case 2 -> getFilter().getMaxStackSize() * vaultMultiplier;
+            case 2 -> getFilter().getMaxStackSize() * getVaultMultiplier();
             default -> throw new IllegalArgumentException("Invalid Mode");
         };
     }
