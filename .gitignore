@@ -23,4 +23,8 @@ run
 runs
 run-data
 
+#ssh
+idfile
+idfile.pub
+
 repo

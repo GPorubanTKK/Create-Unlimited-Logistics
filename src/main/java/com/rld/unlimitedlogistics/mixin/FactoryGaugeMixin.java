@@ -1,25 +1,20 @@
 package com.rld.unlimitedlogistics.mixin;
 
-import com.llamalad7.mixinextras.expression.Definition;
-import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.sugar.Local;
-import com.rld.unlimitedlogistics.CreateUnlimitedLogistics;
 import com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueSettingsBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueSettingsBoard;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueSettingsFormatter;
-import com.simibubi.create.foundation.blockEntity.behaviour.filtering.FilteringBehaviour;
 import com.simibubi.create.foundation.utility.CreateLang;
+import com.simibubi.create.infrastructure.config.AllConfigs;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -35,6 +30,7 @@ import static com.rld.unlimitedlogistics.CreateUnlimitedLogistics.LOGGER;
 @Mixin(FactoryPanelBehaviour.class)
 public abstract class FactoryGaugeMixin extends FilteringBehaviourMixin {
     @Unique int mode = 0;
+    @Unique private final static int vaultMultiplier = AllConfigs.server().logistics.vaultCapacity.get();
 
     @Inject(method = "createBoard", at = @At("HEAD"), cancellable = true)
     public void onCreateBoard(Player player, BlockHitResult hitResult, CallbackInfoReturnable<ValueSettingsBoard> cir) {
@@ -108,7 +104,7 @@ public abstract class FactoryGaugeMixin extends FilteringBehaviourMixin {
         return levelInStorage / switch(mode) {
             case 0 -> 1;
             case 1 -> getFilter().getMaxStackSize();
-            case 2 -> getFilter().getMaxStackSize() * 20;
+            case 2 -> getFilter().getMaxStackSize() * vaultMultiplier;
             default -> throw new IllegalStateException("Invalid Mode: " + mode);
         };
     }
@@ -128,7 +124,7 @@ public abstract class FactoryGaugeMixin extends FilteringBehaviourMixin {
         return getAmount() * switch(mode) {
             case 0 -> 1;
             case 1 -> getFilter().getMaxStackSize();
-            case 2 -> getFilter().getMaxStackSize() * 20;
+            case 2 -> getFilter().getMaxStackSize() * vaultMultiplier;
             default -> throw new IllegalArgumentException("Invalid Mode");
         };
     }

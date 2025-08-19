@@ -36,6 +36,5 @@ public class CreateUnlimitedLogistics {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public CreateUnlimitedLogistics(ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 }
