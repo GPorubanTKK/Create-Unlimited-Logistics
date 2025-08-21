@@ -10,7 +10,7 @@ public class CULConfig {
     public ModConfigSpec.ConfigValue<Integer> GAUGE_SLOT_MAX;
 
     private CULConfig(ModConfigSpec.Builder builder) {
-        GAUGE_SLOT_MAX = builder.defineInRange("createunlimitedlogistics.configuration.slot_max", 64, 1, 999);
+        GAUGE_SLOT_MAX = builder.defineInRange("createunlimitedlogistics.configuration.slot_max", 64, 1, 423);
     }
 
     static {
