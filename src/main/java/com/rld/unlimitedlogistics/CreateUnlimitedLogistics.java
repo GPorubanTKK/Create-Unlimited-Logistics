@@ -1,5 +1,6 @@
 package com.rld.unlimitedlogistics;
 
+import com.rld.unlimitedlogistics.config.CULConfig;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -36,5 +37,6 @@ public class CreateUnlimitedLogistics {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public CreateUnlimitedLogistics(ModContainer modContainer) {
+        modContainer.registerConfig(ModConfig.Type.COMMON, CULConfig.SPEC);
     }
 }

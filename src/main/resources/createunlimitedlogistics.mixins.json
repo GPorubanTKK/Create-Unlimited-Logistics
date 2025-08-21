@@ -1,15 +1,16 @@
 {
-  "required": true,
-  "package": "com.rld.unlimitedlogistics.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "FilteringBehaviourMixin",
-    "FactoryGaugeMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  },
-  "overwrites": {
-    "requireAnnotations": true
-  }
+    "required": true,
+    "package": "com.rld.unlimitedlogistics.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "mixins": [
+        "FactoryGaugeMixin",
+        "FilteringBehaviourMixin",
+        "FactoryScreenMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "overwrites": {
+        "requireAnnotations": true
+    }
 }
