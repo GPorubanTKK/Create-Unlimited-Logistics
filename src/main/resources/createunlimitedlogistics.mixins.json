@@ -4,8 +4,12 @@
     "compatibilityLevel": "JAVA_21",
     "mixins": [
         "FactoryGaugeMixin",
+        "FactoryScreenMixin",
         "FilteringBehaviourMixin",
-        "FactoryScreenMixin"
+        "belt.BeltMixin",
+        "belt.BlockMixin",
+        "belt.HorizontalKineticBlockMixin",
+        "belt.KineticBlockMixin"
     ],
     "injectors": {
         "defaultRequire": 1

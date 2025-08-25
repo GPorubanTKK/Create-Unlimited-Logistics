@@ -8,9 +8,11 @@ public class CULConfig {
     public static final ModConfigSpec SPEC;
 
     public ModConfigSpec.ConfigValue<Integer> GAUGE_SLOT_MAX;
+    public ModConfigSpec.ConfigValue<Boolean> BULK_MIXING;
 
     private CULConfig(ModConfigSpec.Builder builder) {
         GAUGE_SLOT_MAX = builder.defineInRange("createunlimitedlogistics.configuration.slot_max", 64, 1, 423);
+        BULK_MIXING = builder.define("createunlimitedlogistics.configuration.bulk_mixing", false);
     }
 
     static {

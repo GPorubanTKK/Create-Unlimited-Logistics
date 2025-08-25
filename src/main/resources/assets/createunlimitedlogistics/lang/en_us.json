@@ -3,5 +3,6 @@
   "createunlimitedlogistics.configuration.section.createunlimitedlogistics.common.toml": "Create: Unlimited Logistics Configs",
   "createunlimitedlogistics.configuration.section.createunlimitedlogistics.common.toml.title": "Create: Unlimited Logistics Configs",
   "schedule.condition.threshold.vaults": "Vaults",
-  "createunlimitedlogistics.configuration.slot_max": "Maximum amount per factory gauge crafting slot"
+  "createunlimitedlogistics.configuration.slot_max": "Maximum amount per factory gauge crafting slot",
+  "createunlimitedlogistics.configuration.bulk_mixing": "If possible, mix an entire stack at once"
 }

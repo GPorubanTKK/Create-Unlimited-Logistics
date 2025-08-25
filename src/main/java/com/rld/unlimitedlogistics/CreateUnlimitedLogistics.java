@@ -1,6 +1,7 @@
 package com.rld.unlimitedlogistics;
 
 import com.rld.unlimitedlogistics.config.CULConfig;
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -35,6 +36,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class CreateUnlimitedLogistics {
     public static final String MODID = "createunlimitedlogistics";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID);
 
     public CreateUnlimitedLogistics(ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.COMMON, CULConfig.SPEC);
